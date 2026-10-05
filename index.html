@@ -1,0 +1,73 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>競馬予想</title><style>
+:root{--bg:#f7f7f5;--card:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:#e3e3e0;--pos:#1a7f4b;--pos-bg:#d8f0e2;
+--neg:#c0392b;--neg-bg:#f8dcd8;--accent:#2f5bd3;--bar:#2f5bd3;--chip:#efefec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141416;--card:#1e1e21;--text:#ececef;
+--muted:#9a9aa1;--line:#323236;--pos:#4cc38a;--pos-bg:#183527;--neg:#ff7b6b;--neg-bg:#3d1f1b;--accent:#7b9cff;
+--bar:#6f8ff5;--chip:#2a2a2e}}
+:root[data-theme="dark"]{--bg:#141416;--card:#1e1e21;--text:#ececef;--muted:#9a9aa1;--line:#323236;--pos:#4cc38a;
+--pos-bg:#183527;--neg:#ff7b6b;--neg-bg:#3d1f1b;--accent:#7b9cff;--bar:#6f8ff5;--chip:#2a2a2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Hiragino Sans",
+"Noto Sans JP",sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 10px}
+.sub{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 0;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--muted)}
+.chip b{color:var(--text);font-weight:600}
+details.horse{border-top:1px solid var(--line)}details.horse:first-of-type{border-top:0}
+details.horse>summary{list-style:none;cursor:pointer;padding:10px 14px;display:grid;
+grid-template-columns:28px 34px 1fr 92px;gap:8px;align-items:center}
+details.horse>summary::-webkit-details-marker{display:none}
+.mark{font-size:18px;text-align:center}.num{font-variant-numeric:tabular-nums;color:var(--muted);text-align:right}
+.name{min-width:0}.name b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name span{font-size:12px;color:var(--muted)}
+.prob{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.pbar{height:4px;background:var(--line);border-radius:2px;margin-top:4px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--bar)}
+.tags{grid-column:3/5;display:flex;flex-wrap:wrap;gap:4px;margin-top:-2px}
+.tag{font-size:11px;border-radius:4px;padding:0 6px}.tag.p{background:var(--pos-bg);color:var(--pos)}
+.tag.n{background:var(--neg-bg);color:var(--neg)}
+.breakdown{padding:4px 14px 14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) 64px;gap:8px;align-items:center;padding:3px 0}
+.row .lbl{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .val{font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.div{position:relative;height:14px}.div::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;
+border-left:1px solid var(--line)}
+.div i{position:absolute;top:2px;height:10px;border-radius:2px}.div i.p{left:50%;background:var(--pos)}
+.div i.n{right:50%;background:var(--neg)}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+details.grp>summary{list-style:none;cursor:pointer}details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary .lbl::before{content:"▸ ";color:var(--muted)}details.grp[open]>summary .lbl::before{content:"▾ "}
+.feats{margin:2px 0 8px 14px;padding-left:8px;border-left:2px solid var(--line)}
+.feats .row{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) 56px}
+.feats .row .lbl{color:var(--muted);font-size:12px;white-space:normal;line-height:1.35}.feats .row .val{font-size:12px}
+.fv{color:var(--text)}
+.total{border-top:1px solid var(--line);margin-top:6px;padding-top:6px;font-weight:600}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+th,td{padding:5px 6px;text-align:right;white-space:nowrap}th{color:var(--muted);font-weight:500}
+td.l,th.l{text-align:left}tbody tr{border-top:1px solid var(--line)}
+.note{color:var(--muted);font-size:12px;margin-top:8px}
+.theme{position:fixed;top:10px;right:10px;background:var(--card);border:1px solid var(--line);color:var(--text);
+border-radius:8px;padding:4px 8px;font-size:12px;cursor:pointer}
+</style><script>
+(function(){var k='keiba-theme';try{var t=localStorage.getItem(k);if(t)document.documentElement.dataset.theme=t}catch(e){}
+document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme');if(!b)return;
+b.onclick=function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':
+matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';
+try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><body><button class="theme" type="button">表示切替</button><main>
+<style>
+.day{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 12px;padding:14px;
+border-top:1px solid var(--line);color:var(--text);text-decoration:none}.day:first-child{border-top:0}
+.day span{color:var(--muted);font-size:13px}
+</style>
+<h1>競馬予想</h1>
+<div class="sub">JRA の各レースの3着以内の確率と、単勝の買い目</div>
+<h2>日ごとの予想</h2>
+<div class="card"><a class="day" href="days/20260927.html"><b>2026年9月27日（日）</b><span>買い目と予想 ›</span></a></div>
+<h2>レポート</h2><div class="card"><a class="day" href="reports/roi_report.html"><b>回収率の試作レポート</b><span>買い方ごとの回収率の検証 ›</span></a><a class="day" href="reports/model_report.html"><b>モデル分析レポート</b><span>レース種別ごとの精度と、効いている要因 ›</span></a></div>
+<p class="note">買い目は「期待値が高い馬の単勝」です。過去の検証では回収率 94〜96% で、長い目で見ると負ける見込みの、
+損を抑えるための買い方です。馬券の購入は自己責任でお願いします。</p>
+</main></body></html>

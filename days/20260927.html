@@ -1,0 +1,83 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>2026年9月27日（日）の買い目</title><style>
+:root{--bg:#f7f7f5;--card:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:#e3e3e0;--pos:#1a7f4b;--pos-bg:#d8f0e2;
+--neg:#c0392b;--neg-bg:#f8dcd8;--accent:#2f5bd3;--bar:#2f5bd3;--chip:#efefec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141416;--card:#1e1e21;--text:#ececef;
+--muted:#9a9aa1;--line:#323236;--pos:#4cc38a;--pos-bg:#183527;--neg:#ff7b6b;--neg-bg:#3d1f1b;--accent:#7b9cff;
+--bar:#6f8ff5;--chip:#2a2a2e}}
+:root[data-theme="dark"]{--bg:#141416;--card:#1e1e21;--text:#ececef;--muted:#9a9aa1;--line:#323236;--pos:#4cc38a;
+--pos-bg:#183527;--neg:#ff7b6b;--neg-bg:#3d1f1b;--accent:#7b9cff;--bar:#6f8ff5;--chip:#2a2a2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Hiragino Sans",
+"Noto Sans JP",sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 10px}
+.sub{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 0;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--muted)}
+.chip b{color:var(--text);font-weight:600}
+details.horse{border-top:1px solid var(--line)}details.horse:first-of-type{border-top:0}
+details.horse>summary{list-style:none;cursor:pointer;padding:10px 14px;display:grid;
+grid-template-columns:28px 34px 1fr 92px;gap:8px;align-items:center}
+details.horse>summary::-webkit-details-marker{display:none}
+.mark{font-size:18px;text-align:center}.num{font-variant-numeric:tabular-nums;color:var(--muted);text-align:right}
+.name{min-width:0}.name b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name span{font-size:12px;color:var(--muted)}
+.prob{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.pbar{height:4px;background:var(--line);border-radius:2px;margin-top:4px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--bar)}
+.tags{grid-column:3/5;display:flex;flex-wrap:wrap;gap:4px;margin-top:-2px}
+.tag{font-size:11px;border-radius:4px;padding:0 6px}.tag.p{background:var(--pos-bg);color:var(--pos)}
+.tag.n{background:var(--neg-bg);color:var(--neg)}
+.breakdown{padding:4px 14px 14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) 64px;gap:8px;align-items:center;padding:3px 0}
+.row .lbl{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .val{font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.div{position:relative;height:14px}.div::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;
+border-left:1px solid var(--line)}
+.div i{position:absolute;top:2px;height:10px;border-radius:2px}.div i.p{left:50%;background:var(--pos)}
+.div i.n{right:50%;background:var(--neg)}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+details.grp>summary{list-style:none;cursor:pointer}details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary .lbl::before{content:"▸ ";color:var(--muted)}details.grp[open]>summary .lbl::before{content:"▾ "}
+.feats{margin:2px 0 8px 14px;padding-left:8px;border-left:2px solid var(--line)}
+.feats .row{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) 56px}
+.feats .row .lbl{color:var(--muted);font-size:12px;white-space:normal;line-height:1.35}.feats .row .val{font-size:12px}
+.fv{color:var(--text)}
+.total{border-top:1px solid var(--line);margin-top:6px;padding-top:6px;font-weight:600}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+th,td{padding:5px 6px;text-align:right;white-space:nowrap}th{color:var(--muted);font-weight:500}
+td.l,th.l{text-align:left}tbody tr{border-top:1px solid var(--line)}
+.note{color:var(--muted);font-size:12px;margin-top:8px}
+.theme{position:fixed;top:10px;right:10px;background:var(--card);border:1px solid var(--line);color:var(--text);
+border-radius:8px;padding:4px 8px;font-size:12px;cursor:pointer}
+</style><script>
+(function(){var k='keiba-theme';try{var t=localStorage.getItem(k);if(t)document.documentElement.dataset.theme=t}catch(e){}
+document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme');if(!b)return;
+b.onclick=function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':
+matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';
+try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><body><button class="theme" type="button">表示切替</button><main>
+<style>
+.caution{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;
+padding:12px 14px;font-size:13px;line-height:1.7;margin:12px 0}
+.place{margin-top:22px}
+.race{display:block;color:var(--text);text-decoration:none;padding:12px 14px;border-top:1px solid var(--line)}
+.race:first-child{border-top:0}
+.race .hd{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.race .no{font-weight:700;min-width:2.4em}.race .tm{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.race .nm{font-weight:600}.race .cd{color:var(--muted);font-size:12px}
+.buy{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+.buy .b{background:var(--pos-bg);color:var(--pos);border-radius:6px;padding:2px 8px;font-size:13px;font-weight:600}
+.buy .skip{color:var(--muted);font-size:13px}
+.picks{margin-top:4px;color:var(--muted);font-size:12px}
+.vt td,.vt th{padding:6px 8px}.vt tr.on td{background:var(--pos-bg)}
+.back{display:inline-block;margin:0 0 6px;color:var(--accent);text-decoration:none;font-size:14px}
+</style>
+<a class="back" href="../index.html">‹ トップ</a>
+<h1>2026年9月27日（日）の買い目</h1>
+<div class="sub">23レース ・ 買い目 15 点（1点100円なら 1,500円） ・ 作成 10/06 01:44（オッズ 09/27 16:35）</div>
+<p class="note">このページは、すでに終わったレースで作った見本です。オッズは確定オッズで、実際に買う時点のオッズとは異なります。</p><div class="caution">結果が出た 23 レースの成績: 買い目 15 点のうち 3 点的中、払戻 1,680円 / 購入 1,500円（回収率 112%）</div><div class="caution">買い目は「期待値 0.85 以上の馬の単勝」です。2022〜2026年の検証では回収率 94〜96%（毎レース1番人気の単勝は約80%）で、損は抑えられますが<b>長い目で見ると負ける見込み</b>の買い方です。オッズは下の時刻のもので、発走までに変わります。馬券の購入は自己責任で、無理のない範囲でお願いします。</div>
+<h2 class="place">中山</h2><div class="card"><a class="race" href="../races/202606040901.html"><div class="hd"><span class="no">1R</span><span class="tm">10:00</span><span class="nm">2歳未勝利</span><span class="cd">ダート1200m・15頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎13 ワレモコウ 66%　○7 マリノエスプレッソ 59%　▲11 ジェミニディウ 44%<br>結果: 1着 7 マリノエスプレッソ（単勝 670円）</div></a><a class="race" href="../races/202606040902.html"><div class="hd"><span class="no">2R</span><span class="tm">10:35</span><span class="nm">2歳未勝利</span><span class="cd">芝2000m・12頭</span></div><div class="buy"><span class="b">単勝 4 ニューロファイター（8.5倍）</span><span class="b">単勝 6 トーセンマスラオ（3.9倍）</span></div><div class="picks">3着以内の確率: ◎2 プリンキパトゥス 76%　○6 トーセンマスラオ 57%　▲12 レジームチェンジ 49%<br>結果: 1着 2 プリンキパトゥス（単勝 260円）</div></a><a class="race" href="../races/202606040903.html"><div class="hd"><span class="no">3R</span><span class="tm">11:05</span><span class="nm">2歳未勝利</span><span class="cd">ダート1800m・9頭</span></div><div class="buy"><span class="b">単勝 8 ファウナード（18.5倍）</span></div><div class="picks">3着以内の確率: ◎1 レッドマウロア 87%　○9 イキフン 56%　▲4 ファブリック 56%<br>結果: 1着 4 ファブリック（単勝 760円）</div></a><a class="race" href="../races/202606040904.html"><div class="hd"><span class="no">4R</span><span class="tm">11:35</span><span class="nm">2歳新馬</span><span class="cd">芝1200m・15頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎7 ピンクダイアモンド 39%　○4 ジョワリヴレ 29%　▲14 ユーサイコー 28%<br>結果: 1着 5 ミエノヴィヴィッド（単勝 1,980円）</div></a><a class="race" href="../races/202606040905.html"><div class="hd"><span class="no">5R</span><span class="tm">12:25</span><span class="nm">2歳新馬</span><span class="cd">芝2000m・10頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎3 ダイアナマリア 60%　○6 スワーヴバシレウス 51%　▲7 ライカホウ 40%<br>結果: 1着 3 ダイアナマリア（単勝 170円）</div></a><a class="race" href="../races/202606040906.html"><div class="hd"><span class="no">6R</span><span class="tm">12:55</span><span class="nm">3歳以上1勝クラス</span><span class="cd">ダート1800m・16頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎16 ワンダーブリッツ 47%　○14 シーギリヤロック 44%　▲11 ミスターキャンベラ 38%<br>結果: 1着 11 ミスターキャンベラ（単勝 330円）</div></a><a class="race" href="../races/202606040907.html"><div class="hd"><span class="no">7R</span><span class="tm">13:25</span><span class="nm">3歳以上1勝クラス</span><span class="cd">芝1600m・16頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎6 デイジー 45%　○13 ナハトナナレオン 34%　▲15 ジーティーシンドウ 29%<br>結果: 1着 3 コスモキャバリエ（単勝 660円）</div></a><a class="race" href="../races/202606040908.html"><div class="hd"><span class="no">8R</span><span class="tm">13:55</span><span class="nm">3歳以上2勝クラス</span><span class="cd">ダート1800m・15頭</span></div><div class="buy"><span class="b">単勝 2 ロードソルスティス（29.2倍）</span></div><div class="picks">3着以内の確率: ◎15 ドゥマーヴェリック 48%　○6 テーオーライマン 37%　▲14 レッドライトニング 36%<br>結果: 1着 11 メディチパワー（単勝 330円）</div></a><a class="race" href="../races/202606040909.html"><div class="hd"><span class="no">9R</span><span class="tm">14:25</span><span class="nm">サフラン賞</span><span class="cd">芝1600m・7頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎7 リサナウト 70%　○2 シルクドマルス 59%　▲3 シルバーウィル 54%<br>結果: 1着 3 シルバーウィル（単勝 640円）</div></a><a class="race" href="../races/202606040910.html"><div class="hd"><span class="no">10R</span><span class="tm">15:01</span><span class="nm">茨城新聞杯</span><span class="cd">芝2000m・18頭</span></div><div class="buy"><span class="b">単勝 6 ミツカネベネラ（21.7倍）</span></div><div class="picks">3着以内の確率: ◎7 ドナルンバ 40%　○17 マテンロウギフト 31%　▲4 コスモイシュタル 29%<br>結果: 1着 5 ハニードレス（単勝 1,300円）</div></a><a class="race" href="../races/202606040911.html"><div class="hd"><span class="no">11R</span><span class="tm">15:40</span><span class="nm">スプリンターズS</span><span class="cd">芝1200m・16頭</span></div><div class="buy"><span class="b">単勝 4 ジューンブレア（28.3倍）</span></div><div class="picks">3着以内の確率: ◎9 スターアニス 46%　○6 ワールズエンド 43%　▲13 パンジャタワー 41%<br>結果: 1着 16 ピューロマジック（単勝 2,450円）</div></a><a class="race" href="../races/202606040912.html"><div class="hd"><span class="no">12R</span><span class="tm">16:30</span><span class="nm">外房S</span><span class="cd">ダート1200m・16頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎9 ワンダラー 43%　○13 ライトニングゼウス 35%　▲4 イノセントキャット 33%<br>結果: 1着 7 マーゴットゲイン（単勝 960円）</div></a></div><h2 class="place">阪神</h2><div class="card"><a class="race" href="../races/202609040902.html"><div class="hd"><span class="no">2R</span><span class="tm">10:20</span><span class="nm">2歳未勝利</span><span class="cd">芝1600m・8頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎3 ナイトインチュニス 82%　○1 プレシャスタイム 70%　▲2 シュプレヒコール 60%<br>結果: 1着 5 セーニョレガーレ（単勝 2,530円）</div></a><a class="race" href="../races/202609040903.html"><div class="hd"><span class="no">3R</span><span class="tm">10:50</span><span class="nm">2歳未勝利</span><span class="cd">ダート1800m・9頭</span></div><div class="buy"><span class="b">単勝 9 セブンサークル（18.2倍）</span><span class="b">単勝 8 ダンスコマンド（8.4倍）</span></div><div class="picks">3着以内の確率: ◎2 ブックオブケルズ 77%　○6 ミンコフスキー 62%　▲7 ナオミガサイキョウ 45%<br>結果: 1着 2 ブックオブケルズ（単勝 140円）</div></a><a class="race" href="../races/202609040904.html"><div class="hd"><span class="no">4R</span><span class="tm">11:20</span><span class="nm">2歳未勝利</span><span class="cd">芝2000m・7頭</span></div><div class="buy"><span class="b">単勝 7 クラリスバローズ（2.6倍）</span></div><div class="picks">3着以内の確率: ◎3 エトワールハマー 76%　○4 ガリアルダ 70%　▲7 クラリスバローズ 69%<br>結果: 1着 4 ガリアルダ（単勝 550円）</div></a><a class="race" href="../races/202609040905.html"><div class="hd"><span class="no">5R</span><span class="tm">12:10</span><span class="nm">2歳新馬</span><span class="cd">芝1400m・10頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎8 エターナルバラード 44%　○3 パルスカ 44%　▲1 クリスレグナム 38%<br>結果: 1着 4 メモリーブック（単勝 10,740円）</div></a><a class="race" href="../races/202609040906.html"><div class="hd"><span class="no">6R</span><span class="tm">12:40</span><span class="nm">2歳新馬</span><span class="cd">ダート1800m・16頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎7 アメリカンステラ 58%　○13 テムスターオー 27%　▲1 コンヴィヴィアル 24%<br>結果: 1着 16 ヤマニンガルブ（単勝 750円）</div></a><a class="race" href="../races/202609040907.html"><div class="hd"><span class="no">7R</span><span class="tm">13:10</span><span class="nm">3歳以上1勝クラス</span><span class="cd">ダート1400m・16頭</span></div><div class="buy"><span class="b">単勝 8 エルフェニックス（12.9倍）</span><span class="b">単勝 4 バロニアル（30.5倍）</span></div><div class="picks">3着以内の確率: ◎6 ハグレジョー 65%　○9 オウケンブラッド 44%　▲2 グランデスフィーダ 31%<br>結果: 1着 8 エルフェニックス（単勝 1,290円） <b>的中</b></div></a><a class="race" href="../races/202609040908.html"><div class="hd"><span class="no">8R</span><span class="tm">13:40</span><span class="nm">3歳以上1勝クラス</span><span class="cd">芝1800m・12頭</span></div><div class="buy"><span class="b">単勝 8 ワンダーイロネ（17.8倍）</span></div><div class="picks">3着以内の確率: ◎10 コニーアイランド 71%　○9 エンベッカ 43%　▲12 バースデイフライト 40%<br>結果: 1着 10 コニーアイランド（単勝 310円）</div></a><a class="race" href="../races/202609040909.html"><div class="hd"><span class="no">9R</span><span class="tm">14:10</span><span class="nm">兵庫特別</span><span class="cd">芝2400m・11頭</span></div><div class="buy"><span class="skip">見送り</span></div><div class="picks">3着以内の確率: ◎2 ブラックオリンピア 86%　○7 メディテラニアン 53%　▲1 ビップヴォルフ 36%<br>結果: 1着 2 ブラックオリンピア（単勝 130円）</div></a><a class="race" href="../races/202609040910.html"><div class="hd"><span class="no">10R</span><span class="tm">14:45</span><span class="nm">堺S</span><span class="cd">ダート1800m・12頭</span></div><div class="buy"><span class="b">単勝 10 ショウナンバンライ（1.8倍）</span></div><div class="picks">3着以内の確率: ◎5 ジャイアンバローズ 52%　○10 ショウナンバンライ 50%　▲1 ダンツシタン 36%<br>結果: 1着 10 ショウナンバンライ（単勝 180円） <b>的中</b></div></a><a class="race" href="../races/202609040911.html"><div class="hd"><span class="no">11R</span><span class="tm">15:20</span><span class="nm">ポートアイランドS</span><span class="cd">芝1600m・16頭</span></div><div class="buy"><span class="b">単勝 16 レディントン（26.4倍）</span></div><div class="picks">3着以内の確率: ◎10 サブマリーナ 41%　○13 インヴォーグ 31%　▲1 ダノンセンチュリー 29%<br>結果: 1着 1 ダノンセンチュリー（単勝 500円）</div></a><a class="race" href="../races/202609040912.html"><div class="hd"><span class="no">12R</span><span class="tm">16:05</span><span class="nm">3歳以上2勝クラス</span><span class="cd">ダート2000m・12頭</span></div><div class="buy"><span class="b">単勝 8 サンライズオスカー（2.1倍）</span></div><div class="picks">3着以内の確率: ◎4 ソウルアンドジャズ 45%　○8 サンライズオスカー 32%　▲2 タガノヘラクレス 30%<br>結果: 1着 8 サンライズオスカー（単勝 210円） <b>的中</b></div></a></div>
+<p class="note">レースをタップすると、各馬の3着以内の確率の内訳と、期待値の表が見られます。</p>
+</main></body></html>
