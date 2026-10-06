@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>競馬予想</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>候補の買い方の成績</title><style>
 :root{--bg:#f7f7f5;--card:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:#e3e3e0;--pos:#1a7f4b;--pos-bg:#d8f0e2;
 --neg:#c0392b;--neg-bg:#f8dcd8;--accent:#2f5bd3;--bar:#2f5bd3;--chip:#efefec}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141416;--card:#1e1e21;--text:#ececef;
@@ -58,16 +58,12 @@ document.addEventListener('DOMContentLoaded',function(){var b=document.querySele
 b.onclick=function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':
 matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';
 try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><body><button class="theme" type="button">表示切替</button><main>
-<style>
-.day{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 12px;padding:14px;
-border-top:1px solid var(--line);color:var(--text);text-decoration:none}.day:first-child{border-top:0}
-.day span{color:var(--muted);font-size:13px}
-</style>
-<h1>競馬予想</h1>
-<div class="sub">JRA の各レースの3着以内の確率と、単勝の買い目</div>
-<h2>日ごとの予想</h2>
-<div class="card"><a class="day" href="days/20261004.html"><b>2026年10月4日（日）</b><span>買い目と予想 ›</span></a><a class="day" href="days/20261003.html"><b>2026年10月3日（土）</b><span>買い目と予想 ›</span></a></div>
-<h2>レポート</h2><div class="card"><a class="day" href="forward.html"><b>候補の買い方の成績</b><span>これからのレースでの紙上の成績 ›</span></a><a class="day" href="reports/roi_report.html"><b>回収率の試作レポート</b><span>買い方ごとの回収率の検証 ›</span></a><a class="day" href="reports/model_report.html"><b>モデル分析レポート</b><span>レース種別ごとの精度と、効いている要因 ›</span></a></div>
-<p class="note">買い目は「期待値が高い馬の単勝」です。過去の検証では回収率 約99.5%（期間ごとに 88〜122%）で、
-損は大きく抑えられますが、100%を超えると言える水準ではありません。馬券の購入は自己責任でお願いします。</p>
+<a class="back" href="index.html" style="color:var(--accent);text-decoration:none">‹ トップ</a>
+<h1>候補の買い方の成績（これからのレース）</h1>
+<div class="sub">記録した期間: まだ記録がありません ・ 更新 10/06 23:55</div>
+<p class="note">過去の総当たり探索（32,256 通り）で、試した数で補正した厳しい合格ラインを満たした買い方は
+0 通りでした。合格に届かなかった上位を「候補」として、これから行われるレースで紙上の成績を記録しています。
+過去の回収率は絞り込みすぎによる見かけの良さを含むので、ここでの成績（未来のレース）が本当の判定です。1点100円で計算。</p>
+<div class="card scroll"><table><thead><tr><th class="l">買い方</th><th>精算済みの点数</th><th>的中</th><th>払戻 / 購入</th>
+<th>回収率</th><th>過去の検証</th></tr></thead><tbody><tr><td class="l"><b>本番</b> 単勝・2つの平均・縮め0.5・期待値0.85以上</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>99%<div class="sub">12,274点</div></td></tr><tr><td class="l"><b>候補</b> 単勝・血統なし・縮め1・期待値0.85以上（オッズ:40倍以上・頭数:11頭以上・クラス:1〜3勝・芝ダ:ダート）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>190%<div class="sub">623点</div></td></tr><tr><td class="l"><b>候補</b> 単勝・2つの平均・縮め1・期待値0.85以上（オッズ:40倍以上・頭数:11頭以上・クラス:1〜3勝・芝ダ:ダート）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>191%<div class="sub">568点</div></td></tr><tr><td class="l"><b>候補</b> 複勝・血統なし・縮め1・期待値0.95以上（オッズ:5〜15倍・クラス:1〜3勝・芝ダ:芝）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>115%<div class="sub">325点</div></td></tr><tr><td class="l"><b>候補</b> 複勝・血統なし・縮め0.75・期待値0.9以上（オッズ:5〜15倍・頭数:11頭以上・クラス:1〜3勝・芝ダ:芝）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>111%<div class="sub">400点</div></td></tr><tr><td class="l"><b>候補</b> ワイド・2つの平均・縮め0.5・期待値0.8以上（オッズ:中位の組・クラス:OP・重賞・芝ダ:ダート）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>156%<div class="sub">336点</div></td></tr><tr><td class="l"><b>候補</b> ワイド・2つの平均・縮め1・期待値0.85以上（オッズ:中位の組・クラス:OP・重賞・芝ダ:ダート）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>151%<div class="sub">378点</div></td></tr><tr><td class="l"><b>候補</b> 馬連・2つの平均・縮め0.5・期待値0.85以上（オッズ:中位の組・クラス:新馬・未勝利・芝ダ:芝）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>126%<div class="sub">898点</div></td></tr><tr><td class="l"><b>候補</b> 馬連・2つの平均・縮め1・期待値0.85以上（オッズ:中位の組・クラス:OP・重賞・芝ダ:ダート）</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>151%<div class="sub">390点</div></td></tr><tr><td class="l"><b>候補</b> 単勝・2つの平均・縮め0.75・期待値0.9以上</td><td>0</td><td>0</td><td>0円 / 0円</td><td><b>—</b></td><td>101%<div class="sub">7,274点</div></td></tr></tbody></table></div>
 </main></body></html>
