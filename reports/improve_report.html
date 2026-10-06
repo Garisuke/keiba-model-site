@@ -1,0 +1,101 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>モデルの改良の記録</title><style>
+:root{--bg:#f7f7f5;--card:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:#e3e3e0;--pos:#1a7f4b;--pos-bg:#d8f0e2;
+--neg:#c0392b;--neg-bg:#f8dcd8;--accent:#2f5bd3;--bar:#2f5bd3;--chip:#efefec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141416;--card:#1e1e21;--text:#ececef;
+--muted:#9a9aa1;--line:#323236;--pos:#4cc38a;--pos-bg:#183527;--neg:#ff7b6b;--neg-bg:#3d1f1b;--accent:#7b9cff;
+--bar:#6f8ff5;--chip:#2a2a2e}}
+:root[data-theme="dark"]{--bg:#141416;--card:#1e1e21;--text:#ececef;--muted:#9a9aa1;--line:#323236;--pos:#4cc38a;
+--pos-bg:#183527;--neg:#ff7b6b;--neg-bg:#3d1f1b;--accent:#7b9cff;--bar:#6f8ff5;--chip:#2a2a2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Hiragino Sans",
+"Noto Sans JP",sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:16px;margin:28px 0 10px}
+.sub{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 0;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--muted)}
+.chip b{color:var(--text);font-weight:600}
+details.horse{border-top:1px solid var(--line)}details.horse:first-of-type{border-top:0}
+details.horse>summary{list-style:none;cursor:pointer;padding:10px 14px;display:grid;
+grid-template-columns:28px 34px 1fr 92px;gap:8px;align-items:center}
+details.horse>summary::-webkit-details-marker{display:none}
+.mark{font-size:18px;text-align:center}.num{font-variant-numeric:tabular-nums;color:var(--muted);text-align:right}
+.name{min-width:0}.name b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.name span{font-size:12px;color:var(--muted)}
+.prob{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.pbar{height:4px;background:var(--line);border-radius:2px;margin-top:4px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--bar)}
+.tags{grid-column:3/5;display:flex;flex-wrap:wrap;gap:4px;margin-top:-2px}
+.tag{font-size:11px;border-radius:4px;padding:0 6px}.tag.p{background:var(--pos-bg);color:var(--pos)}
+.tag.n{background:var(--neg-bg);color:var(--neg)}
+.breakdown{padding:4px 14px 14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) 64px;gap:8px;align-items:center;padding:3px 0}
+.row .lbl{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .val{font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.div{position:relative;height:14px}.div::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;
+border-left:1px solid var(--line)}
+.div i{position:absolute;top:2px;height:10px;border-radius:2px}.div i.p{left:50%;background:var(--pos)}
+.div i.n{right:50%;background:var(--neg)}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+details.grp>summary{list-style:none;cursor:pointer}details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary .lbl::before{content:"▸ ";color:var(--muted)}details.grp[open]>summary .lbl::before{content:"▾ "}
+.feats{margin:2px 0 8px 14px;padding-left:8px;border-left:2px solid var(--line)}
+.feats .row{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) 56px}
+.feats .row .lbl{color:var(--muted);font-size:12px;white-space:normal;line-height:1.35}.feats .row .val{font-size:12px}
+.fv{color:var(--text)}
+.total{border-top:1px solid var(--line);margin-top:6px;padding-top:6px;font-weight:600}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+th,td{padding:5px 6px;text-align:right;white-space:nowrap}th{color:var(--muted);font-weight:500}
+td.l,th.l{text-align:left}tbody tr{border-top:1px solid var(--line)}
+.note{color:var(--muted);font-size:12px;margin-top:8px}
+.theme{position:fixed;top:10px;right:10px;background:var(--card);border:1px solid var(--line);color:var(--text);
+border-radius:8px;padding:4px 8px;font-size:12px;cursor:pointer}
+</style><script>
+(function(){var k='keiba-theme';try{var t=localStorage.getItem(k);if(t)document.documentElement.dataset.theme=t}catch(e){}
+document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme');if(!b)return;
+b.onclick=function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':
+matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';
+try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><body><button class="theme" type="button">表示切替</button><main>
+<style>td.l{white-space:normal;min-width:11em} td{vertical-align:top}</style>
+<a class="back" href="../index.html" style="color:var(--accent);text-decoration:none">‹ トップ</a>
+<h1>モデルの改良の記録（2026年10月7日）</h1>
+<div class="sub">試験台: 2022/07〜2026/09 を半年ごと9期間に分け、各期間を「その期間より前のデータだけ」で学習したモデルで予想</div>
+
+<h2>まとめ</h2>
+<div class="card" style="padding:12px 16px">
+<p>・確率の当たり具合は、はっきり良くなりました（1着の予想が市場より 6.2 → 8.1 ミリnat/レース良い。9期間すべてで市場より良い）。
+新しい特徴量（展開・過去のオッズとの比較）と、1着の学び方の変更（レース内で合計1になる勝率）の効果です。</p>
+<p>・本番の買い目のモデルと予想モデルは、この形で学習し直しました（学習データ〜10/4）。</p>
+<p>・回収率は、9期間合計で 102.6%（95%の幅 90〜115%）。買い方は前半の期間で決め、後半の期間で 107.8% でした。
+ただし期間ごとのぶれが大きく（59〜129%）、<b>100%を超えると言い切れる水準ではありません</b>。</p>
+<p>・他の券種（三連単・馬単）のオッズは、単勝オッズに無い情報を持っていました（確率の当たり具合はさらに良くなる）。
+ただし、それで選んだ単勝は人気薄に偏って回収率が下がりました。人気薄を分けた形を2025年のデータで確認する予定です（事前に合格の基準を決めてあります）。</p>
+<p>・追跡する候補を新しいモデルで選び直しました（10/10 のレースから記録）。</p>
+</div>
+
+<h2>確率の改良（1着の予想、以前の特徴量との差 ± 標準誤差）</h2>
+<p class="note">ミリnat = 勝ち馬に付けた確率の対数の平均が、どれだけ良くなったか（1レースあたり、千分の一）。回収率よりぶれが小さく、
+試した数による見かけの改善が起きにくい物差しです。</p>
+<div class="card scroll"><table><thead><tr><th class="l">試したこと</th><th class="">1着の予想の改善（ミリnat/レース）</th><th class="">判定</th></tr></thead><tbody><tr><td class="l">展開（ラップの前半・後半の速さ、序盤の位置取り、展開を除いた成績、上がり、先行争いの見込み）</td><td class="">+0.66 ± 0.28</td><td class="">採用</td></tr><tr><td class="l">過去のオッズとの比較（騎手・調教師・父・母父・騎手×調教師・その馬が、オッズの見込みより走った度合い）</td><td class="">+0.48 ± 0.32</td><td class="">採用</td></tr><tr><td class="l">上の2つを両方</td><td class="">+1.28 ± 0.37</td><td class="">採用</td></tr><tr><td class="l">1着を「レース内で合計1になる勝率」として学ぶ（条件付きロジット）</td><td class="">+0.48 ± 0.30</td><td class="">採用</td></tr><tr><td class="l">乱数を変えた木の平均を増やす（3→6）</td><td class="">+0.18 ± 0.10</td><td class="">本番は5に</td></tr><tr><td class="l">レース全体のオッズの形</td><td class="">+0.21 ± 0.23</td><td class="">効果なし</td></tr><tr><td class="l">近走の補足（指数の上向き・同じ競馬場など）</td><td class="">+0.15 ± 0.29</td><td class="">効果なし</td></tr><tr><td class="l">市場の評価の変化（前走→今回のオッズ）</td><td class="">+0.09 ± 0.36</td><td class="">効果なし</td></tr><tr><td class="l">きょうだい（同じ母の産駒）の成績</td><td class="">−0.21 ± 0.23</td><td class="">効果なし</td></tr><tr><td class="l">木を小さく / 大きく / 葉の最小件数を増やす</td><td class="">−0.21 / −0.16 / −0.18</td><td class="">悪化</td></tr><tr><td class="l">新しいレースを重く（半減期1〜2年）</td><td class="">−0.82〜−0.98</td><td class="">悪化</td></tr><tr><td class="l">木の本数を固定（早期終了をやめる）</td><td class="">−0.14〜+0.27</td><td class="">効果なし</td></tr><tr><td class="l">1〜3着の順番まで使う（Plackett-Luce）</td><td class="">−1.95 ± 0.99</td><td class="">悪化</td></tr><tr><td class="l">CatBoost（別の種類の木）</td><td class="">−2.90 ± 0.83</td><td class="">悪化</td></tr></tbody></table></div>
+
+<h2>新しいモデル</h2>
+<div class="card scroll"><table><thead><tr><th class="l"></th><th class="">以前の本番</th><th class="">新しい本番</th></tr></thead><tbody><tr><td class="l">1着の予想（市場より何ミリnat良いか）</td><td class="">+6.21</td><td class=""><b>+8.14</b></td></tr><tr><td class="l">複勝圏の予想（logloss の改善）</td><td class="">0.70%</td><td class="">0.76%</td></tr><tr><td class="l">予想モデル（3着以内）の AUC（2025/01〜2026/09）</td><td class="">0.7959</td><td class="">0.7968</td></tr><tr><td class="l">予想モデルの1位の馬の複勝率</td><td class="">60.8%</td><td class="">61.1%</td></tr></tbody></table></div>
+
+<h2>単勝の買い方（縮めなし・期待値1.0以上）</h2>
+<div class="card scroll"><table><thead><tr><th class="l">期間</th><th class="">点数</th><th class="">回収率</th></tr></thead><tbody><tr><td class="l">前半5期間（2022/07〜2024/12）: ここで買い方を決めた</td><td class="">2,563</td><td class="">99.0%</td></tr><tr><td class="l">後半4期間（2025/01〜2026/09）: 決めたまま確認</td><td class="">1,747</td><td class=""><b>107.8%</b></td></tr><tr><td class="l">9期間合計（95%の幅）</td><td class="">4,310</td><td class="">102.6%（90〜115%）</td></tr><tr><td class="l">期間ごと</td><td class=""></td><td class="">72・107・91・79・129・119・116・117・59%</td></tr><tr><td class="l">参考: 以前の本番の買い方（縮め0.5・期待値0.85）</td><td class="">12,274</td><td class="">99.5%</td></tr></tbody></table></div>
+<p class="note">検証は確定オッズで計算しています。実際に買う時点のオッズは発走までに変わるので、実際の回収率は下がりえます。
+候補の成績表に、記録したときのオッズから確定オッズへの動きも表示するようにしました。</p>
+
+<h2>他の券種のオッズ</h2>
+<p class="note">netkeiba のオッズ API から、過去のレースの確定オッズ（複勝・馬単・三連単など）を集め始めました（2026年分は完了、2025年以前を収集中）。</p>
+<div class="card scroll"><table><thead><tr><th class="l">1着の確率の作り方（2026年、月ごとに前の月だけで学習）</th><th class="">単勝オッズとの差（ミリnat）</th><th class="">期待値1以上の単勝</th></tr></thead><tbody><tr><td class="l">市場のずれモデル（本番）</td><td class="">+9.7</td><td class="">93%（643点）</td></tr><tr><td class="l">単勝オッズ＋三連単の票</td><td class="">+6.6</td><td class="">52%（1,599点）</td></tr><tr><td class="l">本番＋単勝＋三連単</td><td class="">+17.7</td><td class="">88%（3,094点）</td></tr><tr><td class="l">本番＋単勝＋三連単（25倍以上は重みを別に）</td><td class="">+16.7</td><td class="">101%（2,739点）※同じデータを見て作った形</td></tr></tbody></table></div>
+<p class="note">複勝は、複勝の確定オッズから票数の割合を逆算して払戻を正確に計算できるようになりました（実際の払戻との誤差 ±5〜10%）。
+三連単の組の確率と組み合わせた期待値はよく当たっていますが、100%を超える範囲は見つかっていません。</p>
+
+<h2>追跡する候補（新しいモデルでの総当たり 24,576 通りから）</h2>
+<div class="card scroll"><table><thead><tr><th class="l">候補</th><th class="">過去の点数</th><th class="">過去の回収率</th></tr></thead><tbody><tr><td class="l">本番: 単勝・期待値1.0以上</td><td class="">4,310</td><td class="">103%</td></tr><tr><td class="l">単勝・新馬未勝利・ダート・5〜15倍（2種類）</td><td class="">544〜582</td><td class="">136〜139%</td></tr><tr><td class="l">複勝・1〜3勝・芝・5〜15倍（2種類）</td><td class="">336〜393</td><td class="">109〜113%</td></tr><tr><td class="l">ワイド・芝の人気の組 / OP重賞ダート</td><td class="">550 / 451</td><td class="">116% / 133%</td></tr><tr><td class="l">馬連・ダートの人気薄の組 / 1〜3勝の中位の組</td><td class="">2,962 / 818</td><td class="">127% / 124%</td></tr><tr><td class="l">単勝・血統あり・期待値1.05以上</td><td class="">2,062</td><td class="">103%</td></tr></tbody></table></div>
+<p class="note">試した数で補正した厳しい合格ラインを満たした買い方は 0 通りでした。上の候補は「合格に届かなかった中で頑健なもの」で、
+過去の回収率には絞り込みすぎによる見かけの良さが含まれます。これからのレースでの成績が本当の判定です。</p>
+</main></body></html>
