@@ -73,6 +73,10 @@ try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><b
 <p>・他の券種（三連単・馬単）のオッズは、単勝オッズに無い情報を持っていました（確率の当たり具合はさらに良くなる）。
 ただし、それで選んだ単勝は人気薄に偏って回収率が下がりました。人気薄を分けた形を2025年のデータで確認する予定です（事前に合格の基準を決めてあります）。</p>
 <p>・追跡する候補を新しいモデルで選び直しました（10/10 のレースから記録）。</p>
+<p>・<b>事前に決めた確認（2025年）で合格</b>: 三連単の票と組み合わせ、人気薄（25倍以上）は重みを分けた勝率で、期待値1.0以上の単勝が
+2025年3〜12月に 106.3%（3,510点）。ただし高配当の上位5件を除くと 89.6%、2026年1〜9月は 93.6% で、確かとは言えません。
+候補 x1 として、これからのレースで追跡します。</p>
+<p>・レース当日の自動更新は GitHub Actions に移しました（Mac を閉じていても動きます）。</p>
 </div>
 
 <h2>確率の改良（1着の予想、以前の特徴量との差 ± 標準誤差）</h2>
@@ -95,11 +99,14 @@ try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><b
 <h2>他の券種のオッズ</h2>
 <p class="note">netkeiba のオッズ API から、過去のレースの確定オッズ（複勝・馬単・三連単など）を集め始めました（2026年分は完了、2025年以前を収集中）。</p>
 <div class="card scroll"><table><thead><tr><th class="l">1着の確率の作り方（2026年、月ごとに前の月だけで学習）</th><th class="">単勝オッズとの差（ミリnat）</th><th class="">期待値1以上の単勝</th></tr></thead><tbody><tr><td class="l">市場のずれモデル（本番）</td><td class="">+9.7</td><td class="">93%（643点）</td></tr><tr><td class="l">単勝オッズ＋三連単の票</td><td class="">+6.6</td><td class="">52%（1,599点）</td></tr><tr><td class="l">本番＋単勝＋三連単</td><td class="">+17.7</td><td class="">88%（3,094点）</td></tr><tr><td class="l">本番＋単勝＋三連単（25倍以上は重みを別に）</td><td class="">+16.7</td><td class="">101%（2,739点）※同じデータを見て作った形</td></tr></tbody></table></div>
+<p class="note"><b>事前登録の確認（2025年のデータを見る前に形と基準を固定）</b>: 形は softmax(w·[log 単勝, log 本番, log 三連単, 25倍以上だけの log 単勝, 25倍以上だけの log 三連単])、
+重みは月ごとにそれより前の月だけで学習。合格の基準は「2025年3〜12月で期待値1.0以上の単勝が100%以上・1,000点以上」→ 106.3%（3,510点）で合格。
+月ごとでは10か月中6か月が100%超、上位5件を除くと 89.6%。2026年1〜9月は 93.6%（2,601点）。</p>
 <p class="note">複勝は、複勝の確定オッズから票数の割合を逆算して払戻を正確に計算できるようになりました（実際の払戻との誤差 ±5〜10%）。
 三連単の組の確率と組み合わせた期待値はよく当たっていますが、100%を超える範囲は見つかっていません。</p>
 
 <h2>追跡する候補（新しいモデルでの総当たり 24,576 通りから）</h2>
-<div class="card scroll"><table><thead><tr><th class="l">候補</th><th class="">過去の点数</th><th class="">過去の回収率</th></tr></thead><tbody><tr><td class="l">本番: 単勝・期待値1.0以上</td><td class="">4,310</td><td class="">103%</td></tr><tr><td class="l">単勝・新馬未勝利・ダート・5〜15倍（2種類）</td><td class="">544〜582</td><td class="">136〜139%</td></tr><tr><td class="l">複勝・1〜3勝・芝・5〜15倍（2種類）</td><td class="">336〜393</td><td class="">109〜113%</td></tr><tr><td class="l">ワイド・芝の人気の組 / OP重賞ダート</td><td class="">550 / 451</td><td class="">116% / 133%</td></tr><tr><td class="l">馬連・ダートの人気薄の組 / 1〜3勝の中位の組</td><td class="">2,962 / 818</td><td class="">127% / 124%</td></tr><tr><td class="l">単勝・血統あり・期待値1.05以上</td><td class="">2,062</td><td class="">103%</td></tr></tbody></table></div>
+<div class="card scroll"><table><thead><tr><th class="l">候補</th><th class="">過去の点数</th><th class="">過去の回収率</th></tr></thead><tbody><tr><td class="l">本番: 単勝・期待値1.0以上</td><td class="">4,310</td><td class="">103%</td></tr><tr><td class="l">単勝・新馬未勝利・ダート・5〜15倍（2種類）</td><td class="">544〜582</td><td class="">136〜139%</td></tr><tr><td class="l">複勝・1〜3勝・芝・5〜15倍（2種類）</td><td class="">336〜393</td><td class="">109〜113%</td></tr><tr><td class="l">ワイド・芝の人気の組 / OP重賞ダート</td><td class="">550 / 451</td><td class="">116% / 133%</td></tr><tr><td class="l">馬連・ダートの人気薄の組 / 1〜3勝の中位の組</td><td class="">2,962 / 818</td><td class="">127% / 124%</td></tr><tr><td class="l">単勝・血統あり・期待値1.05以上</td><td class="">2,062</td><td class="">103%</td></tr><tr><td class="l">x1: 単勝・三連単の票と組み合わせ・期待値1.0以上（2025年の確認）</td><td class="">3,510</td><td class="">106%</td></tr></tbody></table></div>
 <p class="note">試した数で補正した厳しい合格ラインを満たした買い方は 0 通りでした。上の候補は「合格に届かなかった中で頑健なもの」で、
 過去の回収率には絞り込みすぎによる見かけの良さが含まれます。これからのレースでの成績が本当の判定です。</p>
 </main></body></html>
