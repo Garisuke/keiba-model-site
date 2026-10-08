@@ -77,6 +77,9 @@ try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><b
 2025年3〜12月に 106.3%（3,510点）。ただし高配当の上位5件を除くと 89.6%、2026年1〜9月は 93.6% で、確かとは言えません。
 候補 x1 として、これからのレースで追跡します。</p>
 <p>・レース当日の自動更新は GitHub Actions に移しました（Mac を閉じていても動きます）。</p>
+<p>・<b>調教（10/8 追加）</b>: netkeiba の調教ページの無料部分（短評と A〜D の評価）を全レース分集めました。
+オッズにはほぼ織り込まれていて買い目は変わりませんが、予想モデル（オッズを使わない3着以内の確率）は
+AUC 0.7985 → 0.8017、新馬戦は 0.751 → 0.780 と大きく良くなりました。予想モデルに入れて学習し直しました。</p>
 </div>
 
 <h2>確率の改良（1着の予想、以前の特徴量との差 ± 標準誤差）</h2>
@@ -88,8 +91,11 @@ try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><b
 <div class="card scroll"><table><thead><tr><th class="l"></th><th class="">以前の本番</th><th class="">新しい本番</th></tr></thead><tbody><tr><td class="l">1着の予想（市場より何ミリnat良いか）</td><td class="">+6.21</td><td class=""><b>+8.14</b></td></tr><tr><td class="l">複勝圏の予想（logloss の改善）</td><td class="">0.70%</td><td class="">0.76%</td></tr><tr><td class="l">予想モデル（3着以内）の AUC（2025/01〜2026/09）</td><td class="">0.7959</td><td class=""><b>0.7985</b></td></tr><tr><td class="l">予想モデルの logloss</td><td class="">0.4208</td><td class="">0.4188</td></tr><tr><td class="l">予想モデルの1位の馬の複勝率</td><td class="">60.8%</td><td class="">61.5%</td></tr><tr><td class="l">予想モデルの AUC（直近2期間の分析レポート）</td><td class="">0.798</td><td class="">0.801（市場は 0.824）</td></tr></tbody></table></div>
 
 <h2>予想モデル（3着以内の確率）</h2>
-<div class="card scroll"><table><thead><tr><th class="l">予想モデル（3着以内、オッズなし）の変更</th><th class="">AUC</th><th class="">logloss</th><th class="">1位の複勝率</th></tr></thead><tbody><tr><td class="l">以前の特徴量</td><td class="">0.7959</td><td class="">0.4208</td><td class="">60.8%</td></tr><tr><td class="l">＋展開・過去のオッズとの比較</td><td class="">0.7968</td><td class="">0.4202</td><td class="">61.1%</td></tr><tr><td class="l">＋乱数を変えた3つのモデルの平均</td><td class="">0.7980</td><td class="">0.4193</td><td class="">61.2%</td></tr><tr><td class="l">＋葉を小さく・正則化を強く（本番）</td><td class=""><b>0.7985</b></td><td class=""><b>0.4188</b></td><td class=""><b>61.5%</b></td></tr></tbody></table></div>
-<p class="note">2025/01〜2026/09 の4期間（各期間はそれより前のデータだけで学習）。内訳ページの要因に「展開」「過去のオッズとの比較」が加わりました。</p>
+<div class="card scroll"><table><thead><tr><th class="l">予想モデル（3着以内、オッズなし）の変更</th><th class="">AUC</th><th class="">logloss</th><th class="">1位の複勝率</th></tr></thead><tbody><tr><td class="l">以前の特徴量</td><td class="">0.7959</td><td class="">0.4208</td><td class="">60.8%</td></tr><tr><td class="l">＋展開・過去のオッズとの比較</td><td class="">0.7968</td><td class="">0.4202</td><td class="">61.1%</td></tr><tr><td class="l">＋乱数を変えた3つのモデルの平均</td><td class="">0.7980</td><td class="">0.4193</td><td class="">61.2%</td></tr><tr><td class="l">＋葉を小さく・正則化を強く</td><td class="">0.7985</td><td class="">0.4188</td><td class="">61.5%</td></tr><tr><td class="l">＋調教の評価と短評（本番、10/8）</td><td class=""><b>0.8017</b></td><td class=""><b>0.4165</b></td><td class=""><b>61.8%</b></td></tr></tbody></table></div>
+<p class="note">2025/01〜2026/09 の4期間（各期間はそれより前のデータだけで学習）。内訳ページの要因に「展開」「過去のオッズとの比較」「調教」が加わりました。
+調教の効果は新馬戦で特に大きく、新馬戦の AUC は 0.751 → 0.780 です。</p>
+<p class="note">調教の評価ごとの成績（2024/04〜2026/09）。オッズはほぼ評価どおりに付いていて、D 評価の馬が複勝圏に来にくいくらいの差しかありません（買い目の改善は誤差の範囲）。</p>
+<div class="card scroll"><table><thead><tr><th class="l">調教の評価</th><th class="">頭数</th><th class="">実際の勝率</th><th class="">オッズの勝率</th><th class="">実際の複勝率</th><th class="">オッズの複勝率</th></tr></thead><tbody><tr><td class="l">A</td><td class="">455</td><td class="">25.3%</td><td class="">23.2%</td><td class="">50.6%</td><td class="">51.1%</td></tr><tr><td class="l">B</td><td class="">20,128</td><td class="">9.6%</td><td class="">9.6%</td><td class="">27.5%</td><td class="">27.1%</td></tr><tr><td class="l">C</td><td class="">12,299</td><td class="">3.4%</td><td class="">3.5%</td><td class="">12.7%</td><td class="">13.1%</td></tr><tr><td class="l">D</td><td class="">1,320</td><td class="">1.4%</td><td class="">1.7%</td><td class="">5.5%</td><td class="">7.7%</td></tr></tbody></table></div>
 
 <h2>単勝の買い方（縮めなし・期待値1.0以上）</h2>
 <div class="card scroll"><table><thead><tr><th class="l">期間</th><th class="">点数</th><th class="">回収率</th></tr></thead><tbody><tr><td class="l">前半5期間（2022/07〜2024/12）: ここで買い方を決めた</td><td class="">2,563</td><td class="">99.0%</td></tr><tr><td class="l">後半4期間（2025/01〜2026/09）: 決めたまま確認</td><td class="">1,747</td><td class=""><b>107.8%</b></td></tr><tr><td class="l">9期間合計（95%の幅）</td><td class="">4,310</td><td class="">102.6%（90〜115%）</td></tr><tr><td class="l">期間ごと</td><td class=""></td><td class="">72・107・91・79・129・119・116・117・59%</td></tr><tr><td class="l">参考: 以前の本番の買い方（縮め0.5・期待値0.85）</td><td class="">12,274</td><td class="">99.5%</td></tr></tbody></table></div>
