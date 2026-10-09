@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>競馬予想</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>収支</title><style>
 :root{--bg:#f7f7f5;--card:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:#e3e3e0;--pos:#1a7f4b;--pos-bg:#d8f0e2;
 --neg:#c0392b;--neg-bg:#f8dcd8;--accent:#2f5bd3;--bar:#2f5bd3;--chip:#efefec}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141416;--card:#1e1e21;--text:#ececef;
@@ -57,18 +57,4 @@ border-radius:8px;padding:4px 8px;font-size:12px;cursor:pointer}
 document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.theme');if(!b)return;
 b.onclick=function(){var d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':
 matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';
-try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><body><button class="theme" type="button">表示切替</button><main>
-<style>
-.day{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 12px;padding:14px;
-border-top:1px solid var(--line);color:var(--text);text-decoration:none}.day:first-child{border-top:0}
-.day span{color:var(--muted);font-size:13px}
-</style>
-<h1>競馬予想</h1>
-<div class="sub">JRA の各レースの3着以内の確率と、単勝の買い目</div>
-<h2>日ごとの予想</h2>
-<div class="card"><a class="day" href="days/20261004.html"><b>2026年10月4日（日）</b><span>買い目と予想 ›</span></a><a class="day" href="days/20261003.html"><b>2026年10月3日（土）</b><span>買い目と予想 ›</span></a></div>
-<h2>レポート</h2><div class="card"><a class="day" href="shushi.html"><b>収支（10/10から）</b><span>本番の買い目を毎レース100円で買った場合 ›</span></a><a class="day" href="forward.html"><b>候補の買い方の成績</b><span>これからのレースでの紙上の成績 ›</span></a><a class="day" href="reports/improve_report.html"><b>モデルの改良の記録</b><span>何を試して、何が効いたか（10/7） ›</span></a><a class="day" href="reports/model_report.html"><b>モデル分析レポート</b><span>レース種別ごとの精度と、効いている要因 ›</span></a><a class="day" href="reports/roi_report.html"><b>回収率の試作レポート（10/6 まで）</b><span>以前のモデルでの買い方ごとの検証 ›</span></a></div>
-<p class="note">買い目は「期待値（モデルの勝率 × 単勝オッズ）が 1.0 以上の馬の単勝」です。過去の検証（確定オッズ）では
-回収率 102.6%（95%の幅 90〜115%、期間ごとに 59〜129%）で、100%を超えると言い切れる水準ではありません。
-馬券の購入は自己責任でお願いします。</p>
-</main></body></html>
+try{localStorage.setItem(k,d.dataset.theme)}catch(e){}}})})();</script></head><body><button class="theme" type="button">表示切替</button><main><a class="back" href="index.html" style="color:var(--accent);text-decoration:none">‹ トップ</a><h1>収支（10/10（土）から）</h1><div class="sub">更新 10/09 11:33</div><p class="note">まだ記録がありません。10月10日のレースから、本番の買い目を記録して収支を計算します。</p></main></body></html>
